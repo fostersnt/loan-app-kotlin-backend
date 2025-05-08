@@ -1,5 +1,6 @@
 <?php
 
+use App\Helper\FirebaseService;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    $deviceToken = "cwUjRVbUS1K7X8pDFeGhIc:APA91bE2u0eILSbkZyZSTsiCOSHTpOCmACNjf3xvDOmfjnaQmXQeG6Juc5z4IsPIYQisMgJp9rHFCjLmE7O3DCC6YS2lkkJrsZbSS4TazZlBo0PTh2BdhW4";
+    $title = "Promotion";
+    $body = "Apply for a loan above GHS 2,000.00 and stand a chance of winning a land";
+    $obj = new FirebaseService();
+    $result = $obj->sendNotificationToToken($deviceToken, $title, $body);
+    // $result = FirebaseService::sendNotificationToToken($deviceToken, $title, $body);
+
+    echo json_encode($result);
+
     return view('welcome');
 });
