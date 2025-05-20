@@ -11,6 +11,9 @@ class Repayment extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'loan_id', 'amount', 'repayment_date', 'status'
+        'loan_id',
+        'amount',
+        'repayment_date',
+        'status'
     ];
 }
