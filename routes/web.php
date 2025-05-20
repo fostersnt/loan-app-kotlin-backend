@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\UserCreated;
 use App\Helper\FirebaseService;
 use Illuminate\Support\Facades\Route;
 
@@ -25,4 +26,21 @@ Route::get('/', function () {
     echo json_encode($result);
 
     return view('welcome');
+});
+
+
+Route::get("home", function(){
+    $user = null;
+    return view("websocket.home", compact('user'));
+});
+
+Route::get("user", function(){
+    $user = [
+        'name' => 'George Amoo Quansah',
+        'age' => 23
+    ];
+
+    return base64_encode("8bbfbafb-6357-452f-8288-8f118a2e7b95:3336e9a94b004f548f3ac6e9e53cb24e");
+    UserCreated::dispatch($user);
+    return view("websocket.user_update", compact('user'));
 });
