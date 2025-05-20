@@ -7,10 +7,10 @@ class General {
 
     }
 
-    public static function apiResponse(bool $messageType, string $message, $data)
+    public static function apiResponse(bool $successStatus, string $message, $data = null)
     {
         return response()->json([
-            'success' => $messageType,
+            'success' => $successStatus,
             'message' => $message,
             'data' => $data
         ]);
