@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
+            $table->integer('repayment_months');
+            $table->double('interest_rate');
+            $table->double('interest_amount');
+            $table->double('loan_amount');
+            $table->string('momo_account');
+            $table->string('status');
+            $table->timestamp('approved_at');
+            $table->timestamp('fully_paid_at');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
