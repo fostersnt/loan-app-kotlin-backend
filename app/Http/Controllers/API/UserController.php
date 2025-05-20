@@ -27,8 +27,6 @@ class UserController extends Controller
         $message = "";
         $successStatus = false;
 
-        // return $user_id;
-
         try {
             $user = User::query()->find($user_id);
 
