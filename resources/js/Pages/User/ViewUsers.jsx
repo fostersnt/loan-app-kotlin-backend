@@ -2,10 +2,10 @@
 import React from 'react';
 import AuthLayout from '../../Layouts/AuthLayout';  // Ensure this path is correct
 
-const CreateUser = ({ userName }) => {
+const CreateUser = () => {
   return (
     <div>
-      <h1>Create New User Here</h1>
+      <h1>All Users Here</h1>
     </div>
   );
 };
