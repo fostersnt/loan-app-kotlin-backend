@@ -2,15 +2,16 @@
 import React from 'react';
 import AuthLayout from '../../Layouts/AuthLayout';  // Ensure this path is correct
 
-const CreateUser = () => {
+const ViewUsers = ({userData}) => {
   return (
     <div>
       <h1>All Users Here</h1>
+      <h2 className="">{userData}</h2>
     </div>
   );
 };
 
 // Ensure to use the layout function correctly
-CreateUser.layout = (page) => <AuthLayout children={page} />;
+ViewUsers.layout = (page) => <AuthLayout children={page} />;
 
-export default CreateUser;
+export default ViewUsers;

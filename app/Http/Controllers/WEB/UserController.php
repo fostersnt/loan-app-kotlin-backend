@@ -11,12 +11,13 @@ class UserController extends Controller
     public function index()
     {
         sleep(1);
-        return Inertia::render('User/CreateUser');
+        return Inertia::render('User/ViewUsers', ['userData' => 'Foster Asante']);
     }
 
     public function showCreate()
     {
         sleep(1);
-        return inertia('User/ViewUsers');
+        return Inertia::render('User/CreateUser');
+        // return inertia('User/ViewUsers');
     }
 }
