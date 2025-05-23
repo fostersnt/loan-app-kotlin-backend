@@ -7,6 +7,7 @@ export default function BarChart({ dataset_1 }) {
     return (
         <div className="chartContainer">
             <Bar
+                // height={400}
                 datasetIdKey='id'
                 data={{
                     labels: ['Jun', 'Jul', 'Aug'],
@@ -26,6 +27,8 @@ export default function BarChart({ dataset_1 }) {
                     ]
                 }}
                 options={{
+                    responsive: true,
+                    maintainAspectRatio: false,
                     scales: {
                         y: {
                             beginAtZero: true // Makes sure the Y-axis starts from 0

@@ -35,7 +35,15 @@ export default function DoughnutChart({dataset_1, dataset_2}) {
                     //     },
                     // ],
                 }}
-                fallbackContent={<div><h1>HELLO DOUGHNUT CHART</h1></div>}
+                options={{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    // scales: {
+                    //     y: {
+                    //         beginAtZero: true // Makes sure the Y-axis starts from 0
+                    //     }
+                    // }
+                }}
             />
         </div>
     )
