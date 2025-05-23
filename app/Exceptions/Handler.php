@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 use Throwable;
 
@@ -33,6 +34,7 @@ class Handler extends ExceptionHandler
     {
          // Check if the request expects an Inertia response
         if ($request->expectsJson()) {
+            Log::channel('exceptions')->info("MESSAGE === " . $e->getMessage());
             return parent::render($request, $e);
         }
 
