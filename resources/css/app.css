@@ -1,13 +1,16 @@
 /* Basic Reset */
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Josefin Slab", serif;
+    font-weight: normal;
 }
 
-body {
-    font-family: Arial, sans-serif;
-}
+/* body {
+} */
 
 /* Layout Container */
 .layout-container {
