@@ -17,6 +17,7 @@ class UserController extends Controller
     public function showCreate()
     {
         sleep(1);
+        // dd("THIS IS TESTING");
         return Inertia::render('User/CreateUser');
         // return inertia('User/ViewUsers');
     }

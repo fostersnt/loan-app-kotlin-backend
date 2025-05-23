@@ -1,10 +1,11 @@
 // resources/js/Layouts/AppLayout.jsx
 import React from 'react';
 import { Link } from '@inertiajs/react';
+import '../../css/app.css';
 
 const AuthLayout = ({ children }) => {
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="mainApp">
       {/* Header */}
       <header className="bg-blue-600 text-white py-4">
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
