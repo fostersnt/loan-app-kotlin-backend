@@ -31,10 +31,48 @@ export default function BarChart({ dataset_1 }) {
                     maintainAspectRatio: false,
                     scales: {
                         y: {
-                            beginAtZero: true // Makes sure the Y-axis starts from 0
-                        }
-                    }
+                            beginAtZero: true,
+                            ticks: {
+                                font: {
+                                    family: 'Josefin Slab',
+                                    size: 14,
+                                    weight: 'bolder'
+                                },
+                            },
+                        },
+                        x: {
+                            ticks: {
+                                font: {
+                                    family: 'Josefin Slab',
+                                    size: 14,
+                                    weight: 'bolder'
+                                },
+                            },
+                        },
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                font: {
+                                    family: 'Josefin Slab',
+                                    size: 14,
+                                    weight: 'bolder'
+                                },
+                            },
+                        },
+                        tooltip: {
+                            titleFont: {
+                                family: 'Josefin Slab',
+                                weight: 'bolder'
+                            },
+                            bodyFont: {
+                                family: 'Josefin Slab',
+                                weight: 'bolder'
+                            },
+                        },
+                    },
                 }}
+
             />
         </div>
     )
