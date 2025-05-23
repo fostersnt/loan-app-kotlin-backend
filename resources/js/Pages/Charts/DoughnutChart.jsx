@@ -19,16 +19,16 @@ export default function DoughnutChart() {
                             id: 1,
                             label: '',
                             data: [5, 6, 7],
-                            backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"], // Custom colors for the segments
-                            borderColor: ["#FF6384", "#36A2EB", "#FFCE56"], // Optional: border color for each segment
+                            backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+                            borderColor: ["#FF6384", "#36A2EB", "#FFCE56"],
                             borderWidth: 1,
                         },
                         {
                             id: 2,
                             label: '',
                             data: [3, 2, 1],
-                            backgroundColor: ["#4BC0C0", "#FF9F40", "#FFCD56"], // Custom colors for the segments
-                            borderColor: ["#4BC0C0", "#FF9F40", "#FFCD56"], // Optional: border color for each segment
+                            backgroundColor: ["#4BC0C0", "#FF9F40", "#FFCD56"],
+                            borderColor: ["#4BC0C0", "#FF9F40", "#FFCD56"],
                             borderWidth: 1
                         },
                     ],
