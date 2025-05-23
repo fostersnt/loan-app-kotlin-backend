@@ -16,7 +16,7 @@ const Home = ({ userName }) => {
 
   const data2 = {
     id: 2,
-    label: '',
+    label: 'Users',
     data: [3, 2, 1],
     backgroundColor: ["#4BC0C0", "#FF9F40", "#FFCD56"],
     borderColor: ["#4BC0C0", "#FF9F40", "#FFCD56"],
@@ -24,7 +24,7 @@ const Home = ({ userName }) => {
   };
 
   const data3 = {
-    label: 'Hello',
+    label: 'Deleted Users',
     data: [3, 2, 1],
     backgroundColor: ["#4BC0C0", "#FF9F40", "#FFCD56"],
     borderColor: ["#4BC0C0", "#FF9F40", "#FFCD56"],
@@ -32,11 +32,13 @@ const Home = ({ userName }) => {
   };
 
   return (
-    <div>
+    <>
       <h1>Home Page Here</h1>
+      <div className='mainChartContainer'>
       <DoughnutChart dataset_1={ data1 } dataset_2={ data2 } />
       <BarChart dataset_1={ data3 } />
     </div>
+    </>
   );
 };
 

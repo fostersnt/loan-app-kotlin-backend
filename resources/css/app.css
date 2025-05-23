@@ -97,6 +97,13 @@
     margin-left: 250px; /* Shift content to the right when sidebar is open */
 }
 
+.mainChartContainer{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
 /* Show the sidebar on large screens (>= 768px) */
 @media screen and (min-width: 768px) {
     .sidebar {

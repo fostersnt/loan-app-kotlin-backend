@@ -12,7 +12,7 @@ class UserController extends Controller
     public function index()
     {
         sleep(1);
-        $user = User::query()->firt();
+        $user = User::query()->first();
         // dd($user->only('id', 'name'));
         return Inertia::render('User/ViewUsers', ['userData' => 'Foster Asante']);
     }
