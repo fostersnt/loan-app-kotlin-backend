@@ -13,7 +13,6 @@ export default function DoughnutChart({dataset_1, dataset_2}) {
                 datasetIdKey='id'
                 data={{
                     labels: ['Jun', 'Jul', 'Aug'],
-                    labels: ['Jun', 'Jul', 'Aug'],
                     datasets: [
                         dataset_1, dataset_2
                     ],

@@ -2,8 +2,10 @@
 
 use App\Events\UserCreated;
 use App\Helper\FirebaseService;
+use App\Helper\General;
 use App\Http\Controllers\WEB\DashboardController;
 use App\Http\Controllers\WEB\UserController;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -53,6 +55,14 @@ Route::get("user", function(){
 Route::get('/', function(){
     sleep(1);
     return Inertia::render('Home');
+});
+
+Route::post('errors/error_boundary', function($request){
+    Log::info("INCOMING DATA === " . json_encode($request));
+    $errorMessage = $request->errorMessage;
+    $errorInfo = $request->errorInfo;
+    // return General::apiResponse(false, "$errorMessage $errorInfo");
+    return response()->json(['name' => 'Foster']);
 });
 
 // Route::controller(DashboardController::class)->group(function(){
