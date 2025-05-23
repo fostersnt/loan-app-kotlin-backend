@@ -1,42 +1,36 @@
-// resources/js/Layouts/AppLayout.jsx
-import React from 'react';
-import { Link } from '@inertiajs/react';
+// // resources/js/Layouts/AppLayout.jsx
+import React, { useState } from 'react';
 import '../../css/app.css';
+import { Link } from '@inertiajs/react';
 
 const AuthLayout = ({ children }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div className="mainApp">
-      {/* Header */}
-      <header className="bg-blue-600 text-white py-4">
-        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold">AUTH DASHBOARD</h1>
-          <nav>
-            <Link href="/" className="mr-4 hover:text-gray-200">
-              Home
-            </Link>
-            <Link href="/users" className="mr-4 hover:text-gray-200">
-              View Users
-            </Link>
-            <Link href="/users/create" className="hover:text-gray-200">
-              Add User
-            </Link>
-          </nav>
-        </div>
-      </header>
+    <div className={`layout-container`}>
+      {/* Sidebar */}
+      <div className={`sidebar ${isOpen ? 'open' : ''}`}>
+        <button className="sidebar-toggle" onClick={toggleSidebar}>
+          {isOpen ? 'Close' : 'Open'} Sidebar
+        </button>
+        <ul className="sidebar-list">
+          <li><Link className="sidebar-item" href="/">Dashboard</Link></li>
+          <li><Link className="sidebar-item" href="/users">Users</Link></li>
+          <li><Link className="sidebar-item" href="/users/create">Create User</Link></li>
+        </ul>
+      </div>
 
-      {/* Main content */}
-      <main className="max-w-7xl mx-auto px-4 py-6">
-        {children} {/* This will render the page content */}
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-blue-600 text-white py-4">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          &copy; {new Date().getFullYear()} My Inertia App. All Rights Reserved.
-        </div>
-      </footer>
+      {/* Main content area */}
+      <div className={`main-content ${isOpen ? 'shifted' : ''}`}>
+        {children}
+      </div>
     </div>
   );
 };
 
 export default AuthLayout;
+
