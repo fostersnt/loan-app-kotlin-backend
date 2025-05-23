@@ -3,29 +3,38 @@ import { Doughnut } from "react-chartjs-2";
 import '../../../css/charts.css'
 
 import React from 'react'
+import { color } from "chart.js/helpers";
 
 export default function DoughnutChart() {
     ChartJS.register(ArcElement, Tooltip, Legend);
     return (
         <div className="chartContainer">
             <Doughnut
-            datasetIdKey='id'
-            data={{
-                labels: ['Jun', 'Jul', 'Aug'],
-                datasets: [
-                    {
-                        id: 1,
-                        label: '',
-                        data: [5, 6, 7],
-                    },
-                    {
-                        id: 2,
-                        label: '',
-                        data: [3, 2, 1],
-                    },
-                ],
-            }}
-        />
+                datasetIdKey='id'
+                data={{
+                    labels: ['Jun', 'Jul', 'Aug'],
+                    labels: ['Jun', 'Jul', 'Aug'],
+                    datasets: [
+                        {
+                            id: 1,
+                            label: '',
+                            data: [5, 6, 7],
+                            backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"], // Custom colors for the segments
+                            borderColor: ["#FF6384", "#36A2EB", "#FFCE56"], // Optional: border color for each segment
+                            borderWidth: 1,
+                        },
+                        {
+                            id: 2,
+                            label: '',
+                            data: [3, 2, 1],
+                            backgroundColor: ["#4BC0C0", "#FF9F40", "#FFCD56"], // Custom colors for the segments
+                            borderColor: ["#4BC0C0", "#FF9F40", "#FFCD56"], // Optional: border color for each segment
+                            borderWidth: 1
+                        },
+                    ],
+                }}
+                fallbackContent={<div><h1>HELLO DOUGHNUT CHART</h1></div>}
+            />
         </div>
     )
 }
