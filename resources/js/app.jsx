@@ -10,4 +10,17 @@ createInertiaApp({
   setup({ el, App, props }) {
     createRoot(el).render(<App {...props} />)
   },
+  //Progress bar configuration below
+  progress: {
+    delay: 250,
+
+    color: '#FF6384',
+    // color: '#29d',
+
+    // Whether to include the default NProgress styles...
+    includeCSS: true,
+
+    // Whether the NProgress spinner will be shown...
+    showSpinner: false,
+  },
 })
