@@ -1,6 +1,7 @@
 // resources/js/Pages/User/CreateUser.jsx
 import React from 'react';
 import AuthLayout from '../../Layouts/AuthLayout';  // Ensure this path is correct
+import { Link } from '@inertiajs/react';
 
 const ViewUsers = ({ users }) => {
   console.log("DATA === " + users);
@@ -9,6 +10,10 @@ const ViewUsers = ({ users }) => {
     <div>
       <h1>All Users Here</h1>
       {/* <h2 className="">{users}</h2> */}
+      <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+        <Link href="/users/create" style={{backgroundColor: '#3498db', color: 'white', fontWeight: 'bold', width: '100px', padding: '10px', border: '0px', display: 'flex', justifyContent: 'center', textDecoration: 'none'}}>Add
+        </Link>
+      </div>
       <table className="w-full text-left border-collapse bg-white shadow rounded overflow-hidden">
         <thead>
           <tr className="bg-gray-100 text-gray-700 uppercase text-sm">
