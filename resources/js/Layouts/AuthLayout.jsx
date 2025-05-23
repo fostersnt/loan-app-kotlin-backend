@@ -1,13 +1,18 @@
 // // resources/js/Layouts/AppLayout.jsx
 import React, { useState } from 'react';
 import '../../css/app.css';
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 
 const AuthLayout = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { url } = usePage();
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
+  };
+
+  const isActive = (href) => {
+    return url === href ? 'active' : '';
   };
 
   return (
@@ -18,7 +23,7 @@ const AuthLayout = ({ children }) => {
           {isOpen ? 'Close' : 'Open'} Sidebar
         </button>
         <ul className="sidebar-list">
-          <li><Link className="sidebar-item" href="/">Dashboard</Link></li>
+          <li><Link className={`sidebar-item ${isActive('/')}`} href="/">Dashboard</Link></li>
           <li><Link className="sidebar-item" href="/users">Users</Link></li>
           <li><Link className="sidebar-item" href="/users/create">Create User</Link></li>
         </ul>
