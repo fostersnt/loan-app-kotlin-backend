@@ -24,8 +24,8 @@ const AuthLayout = ({ children }) => {
         </button>
         <ul className="sidebar-list">
           <li><Link className={`sidebar-item ${isActive('/')}`} href="/">Dashboard</Link></li>
-          <li><Link className="sidebar-item" href="/users">Users</Link></li>
-          <li><Link className="sidebar-item" href="/users/create">Create User</Link></li>
+          <li><Link className={`sidebar-item ${isActive('/users')}`} href="/users">Users</Link></li>
+          <li><Link className={`sidebar-item ${isActive('/users/create')}`} href="/users/create">Create User</Link></li>
         </ul>
       </div>
 
