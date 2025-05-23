@@ -10,7 +10,7 @@ export default function PolarAreaChart({ dataset_1 }) {
                 // height={400}
                 datasetIdKey='id'
                 data={{
-                    labels: ['Jun', 'Jul', 'Aug'],
+                    labels: ['Jun', 'Jul', 'Aug', 'Sept', 'Oct'],
                     datasets: [
                         {
                             label: 'My First Dataset',
@@ -19,7 +19,8 @@ export default function PolarAreaChart({ dataset_1 }) {
                                 'rgb(255, 99, 132)',
                                 'rgb(75, 192, 192)',
                                 'rgb(255, 205, 86)',
-                                'rgb(201, 203, 207)',
+                                'rgb(153, 102, 255)',
+                                // 'rgb(201, 203, 207)',
                                 'rgb(54, 162, 235)'
                             ]
                         }
