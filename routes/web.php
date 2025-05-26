@@ -54,7 +54,7 @@ Route::get("user", function(){
 
 Route::get('/', function(){
     sleep(1);
-    return Inertia::render('Home');
+    return Inertia::render('Auth/LoginPage');
 });
 
 Route::post('errors/error_boundary', function($request){
