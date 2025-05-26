@@ -1,6 +1,4 @@
-import { Link } from '@inertiajs/react';
 import { SquarePen } from 'lucide-react'; // or use any icon library you prefer
-import React from 'react';
 
 const EditAction = ({ action, label }) => {
     return (

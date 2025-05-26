@@ -1,6 +1,4 @@
-import { Link } from '@inertiajs/react';
 import { Trash2 } from 'lucide-react'; // or use any icon library you prefer
-import React from 'react';
 
 const DeleteAction = ({ action, label }) => {
     return (
