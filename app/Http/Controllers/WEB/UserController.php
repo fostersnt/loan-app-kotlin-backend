@@ -31,6 +31,11 @@ class UserController extends Controller
         return Inertia::render('User/ViewUsers', ['users' => $users]);
     }
 
+    public function dashboard()
+    {
+        return Inertia::render('Home');
+    }
+
     public function showCreate()
     {
         return Inertia::render('User/CreateUser');
@@ -39,7 +44,7 @@ class UserController extends Controller
     public function showLoginPage()
     {
         if (Auth::user()) {
-            return redirect()->route('home');
+            return redirect()->route('dashboard');
         } else {
             return Inertia::render('Auth/LoginPage');
         }

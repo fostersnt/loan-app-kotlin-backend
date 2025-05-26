@@ -25,9 +25,9 @@ const AuthLayout = ({ children }) => {
             {isOpen ? 'Close' : 'Open'} Sidebar
           </button>
           <ul className="sidebar-list">
-            <li><Link className={`sidebar-item ${isActive('/')}`} href="/">Dashboard</Link></li>
-            <li><Link className={`sidebar-item ${isActive('/users')}`} href="/users">Users</Link></li>
-            <li><Link className={`sidebar-item ${isActive('/users/create')}`} href="/users/create">Create User</Link></li>
+            <li><Link className={`sidebar-item ${isActive('/dashboard')}`} href="/dashboard">Dashboard</Link></li>
+            <li><Link className={`sidebar-item ${isActive('/dashboard/users')}`} href="/dashboard/users">Users</Link></li>
+            <li><Link className={`sidebar-item ${isActive('/dashboard/users/create')}`} href="/dashboard/users/create">Create User</Link></li>
           </ul>
         </div>
 

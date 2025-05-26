@@ -35,12 +35,12 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 // });
 
 
-Route::get("home", function(){
+Route::get("home", function () {
     $user = null;
     return view("websocket.home", compact('user'));
 });
 
-Route::get("user", function(){
+Route::get("user", function () {
     $user = [
         'name' => 'George Amoo Quansah',
         'age' => 23
@@ -57,7 +57,7 @@ Route::get("user", function(){
 //     return Inertia::render('Auth/LoginPage');
 // });
 
-Route::post('errors/error_boundary', function($request){
+Route::post('errors/error_boundary', function ($request) {
     Log::info("INCOMING DATA === " . json_encode($request));
     $errorMessage = $request->errorMessage;
     $errorInfo = $request->errorInfo;
@@ -65,12 +65,16 @@ Route::post('errors/error_boundary', function($request){
     return response()->json(['name' => 'Foster']);
 });
 
-Route::controller(UserController::class)->group(function(){
+Route::controller(UserController::class)->group(function () {
     Route::get('/', 'showLoginPage')->name('show.login.page');
     Route::post('/login', 'userLogin');
 });
 
-Route::controller(UserController::class)->prefix('users')->group(function(){
-    Route::get('', 'index')->name('home');
-    Route::get('create', 'showCreate');
+Route::middleware('auth')->prefix('dashboard')->group(function () {
+    Route::get('/', [UserController::class, 'dashboard'])->name('dashboard');
+
+    Route::controller(UserController::class)->prefix('users')->group(function () {
+        Route::get('', 'index')->name('home');
+        Route::get('create', 'showCreate');
+    });
 });
