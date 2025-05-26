@@ -12,7 +12,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  background-color: #34495e; /* Set background to #34495e */
   font-family: 'Arial', sans-serif;
 `;
 
@@ -42,14 +42,14 @@ const Input = styled.input`
   outline: none;
   transition: border 0.3s ease;
   &:focus {
-    border-color: #2a5298;
+    border-color: #34495e; /* Highlight border color to match button color */
   }
 `;
 
 const Button = styled.button`
   width: 100%;
   padding: 14px;
-  background-color: #2a5298;
+  background-color: #34495e; /* Set button color to #34495e */
   color: white;
   font-size: 18px;
   border: none;
@@ -57,7 +57,7 @@ const Button = styled.button`
   cursor: pointer;
   transition: background-color 0.3s ease;
   &:hover {
-    background-color: #1e3c72;
+    background-color: #2c3e50; /* Slightly darker shade on hover */
   }
 `;
 
@@ -68,7 +68,7 @@ const ForgotPassword = styled.p`
   margin-top: 20px;
   cursor: pointer;
   &:hover {
-    color: #2a5298;
+    color: #34495e; /* Match hover color to button */
   }
 `;
 
