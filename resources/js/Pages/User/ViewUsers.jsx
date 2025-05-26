@@ -3,6 +3,7 @@ import React from 'react';
 import AuthLayout from '../../Layouts/AuthLayout';  // Ensure this path is correct
 import { Link } from '@inertiajs/react';
 import DataTable from 'react-data-table-component';
+import EditAction from '../Actions/EditAction';
 
 const ViewUsers = ({ users }) => {
   console.log("DATA === " + users);
@@ -25,7 +26,7 @@ const ViewUsers = ({ users }) => {
   },
   {
     name: <h2>Action</h2>,
-    selector: row => row.id != null ? (<Link>EDIT {row.id}</Link>) : <h3>N/A</h3>,
+    selector: row => row.id != null ? <EditAction onEdit={{}} label={''}/> : <h3>N/A</h3>,
     sortable: true,
   },
 ];
