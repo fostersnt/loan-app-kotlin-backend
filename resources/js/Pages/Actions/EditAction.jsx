@@ -4,7 +4,7 @@ import React from 'react';
 
 const EditAction = ({ onEdit, label }) => {
     return (
-        <Link href='/dashboard'>
+        <Link href='/dashboard' style={{}}>
             <SquarePen style={{}} />
         </Link>
     );
