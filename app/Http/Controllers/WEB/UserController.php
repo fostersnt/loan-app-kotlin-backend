@@ -23,7 +23,8 @@ class UserController extends Controller
             return [
                 'id' => $user->id,
                 'email' => $user->email,
-                'name' => $user->name
+                'name' => $user->name,
+                'msisdn' => $user->msisdn
             ];
         });
         // dd($user->only('id', 'name'));

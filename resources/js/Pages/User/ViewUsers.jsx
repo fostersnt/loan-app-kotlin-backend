@@ -10,17 +10,17 @@ const ViewUsers = ({ users }) => {
   const columns = [
   {
     name: 'Name',
-    selector: row => row.name,
+    selector: row => row.name != null ? row.name : 'N/A',
     sortable: true,
   },
   {
     name: 'Email',
-    selector: row => row.email,
+    selector: row => row.email != null ? row.email : 'N/A',
     sortable: true,
   },
   {
     name: 'Msisdn',
-    selector: row => row.msisdn,
+    selector: row => row.msisdn != null ? row.msisdn : 'N/A',
     sortable: true,
   },
 ];
