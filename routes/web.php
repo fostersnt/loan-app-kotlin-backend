@@ -52,10 +52,10 @@ Route::get("user", function(){
 });
 
 
-Route::get('/', function(){
-    sleep(1);
-    return Inertia::render('Auth/LoginPage');
-});
+// Route::get('/', function(){
+//     sleep(1);
+//     return Inertia::render('Auth/LoginPage');
+// });
 
 Route::post('errors/error_boundary', function($request){
     Log::info("INCOMING DATA === " . json_encode($request));
@@ -66,6 +66,7 @@ Route::post('errors/error_boundary', function($request){
 });
 
 Route::controller(UserController::class)->group(function(){
+    Route::get('/', 'showLoginPage')->name('show.login.page');
     Route::post('/login', 'userLogin');
 });
 

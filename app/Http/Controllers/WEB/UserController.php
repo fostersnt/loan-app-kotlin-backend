@@ -38,6 +38,16 @@ class UserController extends Controller
         // return inertia('User/ViewUsers');
     }
 
+    public function showLoginPage()
+    {
+        if (Auth::user()) {
+            return redirect()->route('home');
+        } else {
+            return Inertia::render('Auth/LoginPage');
+        }
+        
+    }
+
     public function userLogin(Request $request)
     {
         Log::info("LOGIN DATA === " . json_encode($request->all()));
