@@ -9,23 +9,28 @@ const ViewUsers = ({ users }) => {
 
   const columns = [
   {
-    name: 'Name',
-    selector: row => row.name != null ? row.name : 'N/A',
+    name: <h2>Name</h2>,
+    selector: row => row.name != null ? <h3>{row.name}</h3> : <h3>N/A</h3>,
     sortable: true,
   },
   {
-    name: 'Email',
-    selector: row => row.email != null ? row.email : 'N/A',
+    name: <h2>Email</h2>,
+    selector: row => row.email != null ? <h3>{row.email}</h3> : <h3>N/A</h3>,
     sortable: true,
   },
   {
-    name: 'Msisdn',
-    selector: row => row.msisdn != null ? row.msisdn : 'N/A',
+    name: <h2>Msisdn</h2>,
+    selector: row => row.msisdn != null ? <h3>{row.msisdn}</h3> : <h3>N/A</h3>,
+    sortable: true,
+  },
+  {
+    name: <h2>Action</h2>,
+    selector: row => row.id != null ? (<Link>EDIT {row.id}</Link>) : <h3>N/A</h3>,
     sortable: true,
   },
 ];
 
-  
+
   return (
     <div>
       <h1>All Users Here</h1>
