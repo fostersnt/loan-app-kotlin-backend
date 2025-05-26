@@ -65,10 +65,8 @@ Route::post('errors/error_boundary', function ($request) {
     return response()->json(['name' => 'Foster']);
 });
 
-Route::controller(UserController::class)->group(function () {
-    Route::get('/', 'showLoginPage')->name('show.login.page');
-    Route::post('/login', 'userLogin')->name('login');
-});
+Route::get('/', [UserController::class, 'showLoginPage'])->name('show.login.page');
+Route::post('/login', [UserController::class, 'userLogin'])->name('login');
 
 Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::get('/', [UserController::class, 'dashboard'])->name('dashboard');
