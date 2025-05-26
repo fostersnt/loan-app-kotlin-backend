@@ -65,11 +65,11 @@ Route::post('errors/error_boundary', function($request){
     return response()->json(['name' => 'Foster']);
 });
 
-// Route::controller(DashboardController::class)->group(function(){
-//     Route::get('/', 'dashboard');
-// });
+Route::controller(UserController::class)->group(function(){
+    Route::post('/login', 'userLogin');
+});
 
 Route::controller(UserController::class)->prefix('users')->group(function(){
-    Route::get('', 'index');
+    Route::get('', 'index')->name('home');
     Route::get('create', 'showCreate');
 });

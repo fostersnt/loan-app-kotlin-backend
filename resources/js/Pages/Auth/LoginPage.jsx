@@ -85,7 +85,7 @@ const LoginPage = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         // const data = await LoginApi();
-        post('/post', {
+        post('/login', {
             onSuccess: (page) => {
                 console.log("Login successful!", page);
             },
