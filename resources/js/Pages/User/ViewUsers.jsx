@@ -31,7 +31,7 @@ const ViewUsers = ({ users }) => {
       <h1>All Users Here</h1>
       {/* <h2 className="">{users}</h2> */}
       <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-        <Link href="/users/create" style={{backgroundColor: '#3498db', color: 'white', fontWeight: 'bold', width: '100px', padding: '10px', border: '0px', display: 'flex', justifyContent: 'center', textDecoration: 'none'}}>Add
+        <Link href="/dashboard/users/create" style={{backgroundColor: '#3498db', color: 'white', fontWeight: 'bold', width: '100px', padding: '10px', border: '0px', display: 'flex', justifyContent: 'center', textDecoration: 'none'}}>Add
         </Link>
       </div>
       <DataTable

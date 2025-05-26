@@ -67,11 +67,12 @@ Route::post('errors/error_boundary', function ($request) {
 
 Route::controller(UserController::class)->group(function () {
     Route::get('/', 'showLoginPage')->name('show.login.page');
-    Route::post('/login', 'userLogin');
+    Route::post('/login', 'userLogin')->name('login');
 });
 
 Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::get('/', [UserController::class, 'dashboard'])->name('dashboard');
+    Route::get('/logout', [UserController::class, 'userLogout'])->name('logout');
 
     Route::controller(UserController::class)->prefix('users')->group(function () {
         Route::get('', 'index')->name('home');

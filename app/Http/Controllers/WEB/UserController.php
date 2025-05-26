@@ -33,7 +33,11 @@ class UserController extends Controller
 
     public function dashboard()
     {
-        return Inertia::render('Home');
+        if (Auth::user()) {
+            return Inertia::render('Home');
+        } else {
+            return redirect()->route('show.login.page');
+        }
     }
 
     public function showCreate()
@@ -62,6 +66,16 @@ class UserController extends Controller
                 'email' => 'The provided credentials do not match our records.',
             ]);
             // return General::apiResponse(false, "Error occurred", null);
+        }
+    }
+
+    public function userLogout()
+    {
+        if (Auth::user()) {
+            Auth::logout();
+            return redirect()->route('show.login.page');
+        } else {
+            return redirect()->back();
         }
     }
 }
