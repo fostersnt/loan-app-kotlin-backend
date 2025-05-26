@@ -2,9 +2,29 @@
 import React from 'react';
 import AuthLayout from '../../Layouts/AuthLayout';  // Ensure this path is correct
 import { Link } from '@inertiajs/react';
+import DataTable from 'react-data-table-component';
 
 const ViewUsers = ({ users }) => {
   console.log("DATA === " + users);
+
+  const columns = [
+  {
+    name: 'Name',
+    selector: row => row.name,
+    sortable: true,
+  },
+  {
+    name: 'Email',
+    selector: row => row.email,
+    sortable: true,
+  },
+  {
+    name: 'Msisdn',
+    selector: row => row.msisdn,
+    sortable: true,
+  },
+];
+
   
   return (
     <div>
@@ -14,31 +34,18 @@ const ViewUsers = ({ users }) => {
         <Link href="/users/create" style={{backgroundColor: '#3498db', color: 'white', fontWeight: 'bold', width: '100px', padding: '10px', border: '0px', display: 'flex', justifyContent: 'center', textDecoration: 'none'}}>Add
         </Link>
       </div>
-      <table className="w-full text-left border-collapse bg-white shadow rounded overflow-hidden">
-        <thead>
-          <tr className="bg-gray-100 text-gray-700 uppercase text-sm">
-            <th className="p-3 border-b">Name</th>
-            <th className="p-3 border-b">Email</th>
-            {/* <th className="p-3 border-b">Status</th> */}
-          </tr>
-        </thead>
-        <tbody>
-          {
-            users && users.map((user, idx) => (
-            <tr key={idx} className="hover:bg-gray-50">
-              <td className="p-3 border-b">{user.name}</td>
-              <td className="p-3 border-b">{user.email}</td>
-              {/* <td className="p-3 border-b">{user.status}</td> */}
-            </tr>
-          ))
-          }
-        </tbody>
-      </table>
+      <DataTable
+        title="User List"
+        columns={columns}
+        data={users}
+        pagination
+        selectableRows
+        highlightOnHover
+      />
     </div>
   );
 };
 
-// Ensure to use the layout function correctly
 ViewUsers.layout = (page) => <AuthLayout children={page} />;
 
 export default ViewUsers;
