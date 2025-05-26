@@ -60,7 +60,7 @@ class UserController extends Controller
         $validator = validator($request->all());
         // dd($validator);
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('home');
+            return redirect()->route('dashboard');
         } else {
             return back()->withErrors([
                 'email' => 'The provided credentials do not match our records.',

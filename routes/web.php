@@ -75,7 +75,7 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::get('/logout', [UserController::class, 'userLogout'])->name('logout');
 
     Route::controller(UserController::class)->prefix('users')->group(function () {
-        Route::get('', 'index')->name('home');
+        Route::get('', 'index');
         Route::get('create', 'showCreate');
     });
 });
