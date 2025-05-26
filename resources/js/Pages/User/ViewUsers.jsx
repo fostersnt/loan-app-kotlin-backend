@@ -26,7 +26,7 @@ const ViewUsers = ({ users }) => {
       sortable: true,
     },
     {
-      name: <h2>Action</h2>,
+      name: <h2 style={{width:'100px', display: "flex", justifyContent: "space-around"}}>Action</h2>,
       selector: row => row.id != null ?
         <div style={{width: '100px', display: "flex", justifyContent: "space-around"}}>
           <EditAction onEdit={{}} label={''} />

@@ -2,11 +2,11 @@ import { Link } from '@inertiajs/react';
 import { SquarePen } from 'lucide-react'; // or use any icon library you prefer
 import React from 'react';
 
-const EditAction = ({ onEdit, label }) => {
+const EditAction = ({ action, label }) => {
     return (
-        <Link href='/dashboard' style={{}}>
+        <button onClick={action} style={{border: 'none', backgroundColor: 'transparent', cursor: 'pointer'}}>
             <SquarePen style={{}} />
-        </Link>
+        </button>
     );
 };
 
