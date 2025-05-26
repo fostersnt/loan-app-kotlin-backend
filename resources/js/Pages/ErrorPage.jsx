@@ -14,6 +14,6 @@ const ErrorPage = ({ statusCode, message }) => {
   );
 }
 
-ErrorPage.layout = (page) => <AuthLayout children={page} />;
+// ErrorPage.layout = (page) => <AuthLayout children={page} />;
 
 export default ErrorPage;

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
+import { LoginApi } from "../../api/Login";
+import { useForm } from "@inertiajs/react";
 
 // Animation for the input fields
 const floatUp = keyframes`
@@ -73,38 +75,52 @@ const ForgotPassword = styled.p`
 `;
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const { data, setData, post, processing, errors } = useForm({
+    email: '',
+    password: '',
+});
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    // Add your login logic here
-    console.log("Login with:", email, password);
-  };
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        // const data = await LoginApi();
+        post('/post', {
+            onSuccess: (page) => {
+                console.log("Login successful!", page);
+            },
+            onError: (errors) => {
+                console.log("Validation errors:", errors);
+            },
+            onFinish: () => {
+                console.log("Request completed");
+            }
+        })
+    };
 
-  return (
-    <Container>
-      <FormContainer>
-        <Title>Login</Title>
-        <form onSubmit={handleLogin}>
-          <Input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <Input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <Button type="submit">Login</Button>
-        </form>
-        <ForgotPassword>Forgot your password?</ForgotPassword>
-      </FormContainer>
-    </Container>
-  );
+    return (
+        <Container>
+            <FormContainer>
+                <Title>Login</Title>
+                <form onSubmit={handleLogin}>
+                    <Input
+                        type="email"
+                        placeholder="Email"
+                        value={data.email}
+                        onChange={(e) => setData('email', e.target.value)}
+                    />
+                    <Input
+                        type="password"
+                        placeholder="Password"
+                        value={data.password}
+                        onChange={(e) => setData('password', e.target.value)}
+                    />
+                    <Button type="submit">Login</Button>
+                </form>
+                <ForgotPassword>Forgot your password?</ForgotPassword>
+            </FormContainer>
+        </Container>
+    );
 };
 
 export default LoginPage;
