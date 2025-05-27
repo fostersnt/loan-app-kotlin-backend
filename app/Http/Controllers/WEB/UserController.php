@@ -17,7 +17,7 @@ class UserController extends Controller
 {
     public function Index()
     {
-        $usersData = User::all();
+        $usersData = User::query()->where('id', '<>', Auth::user()->id)->get();
 
         $users = $usersData->map(function ($user) {
             return [
@@ -42,17 +42,23 @@ class UserController extends Controller
 
     public function Create(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-            'name' => 'required',
-            'email' => 'required|string',
-            'msisdn' => 'required|string'
-        ]);
+        try {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'email' => 'required|string',
+                'msisdn' => 'required|string'
+            ]);
 
-        if ($validator->fails()) {
-            return back()->withErrors($validator->errors());
+            if ($validator->fails()) {
+                return back()->withErrors($validator->errors());
+            }
+
+            User::query()->create($request->all());
+            // session()->flash("success", "successful");
+            return back()->with('success_message', 'User created successfully');
+        } catch (\Throwable $th) {
+            return back()->with('error_message', 'Unable to create user');
         }
-
-        User::query()->create($request->all());
 
         Log::info("USER DATA === " . json_encode($request->all()));
     }

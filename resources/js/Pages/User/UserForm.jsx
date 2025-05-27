@@ -2,9 +2,11 @@
 import React, { useState } from 'react';
 import '../../../css/forms.css'
 import { User } from 'lucide-react';
-import { useForm } from '@inertiajs/react';
+import { useForm, usePage } from '@inertiajs/react';
 
 export default function UserForm({ onSubmit }) {
+
+  const flashData = usePage();
 
   const { data, setData, post, processing, progress, errors, setError } = useForm({
     name: '',
@@ -19,7 +21,8 @@ export default function UserForm({ onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("USER DATA === " + JSON.stringify(data));
+    console.log("FLASH DATA === " + JSON.stringify(flashData.props));
+    // console.log("USER DATA === " + JSON.stringify(data));
     post('/dashboard/users/create');
   };
 
@@ -34,7 +37,7 @@ export default function UserForm({ onSubmit }) {
           className="form-control"
           value={data.name}
           onChange={(e) => onValueChange(e)}
-          // required
+        // required
         />
         {errors.name && <div>{errors.name}</div>}
       </div>
@@ -48,7 +51,7 @@ export default function UserForm({ onSubmit }) {
           className="form-control"
           value={data.email}
           onChange={(e) => onValueChange(e)}
-          // required
+        // required
         />
         {errors.email && <div>{errors.email}</div>}
       </div>
