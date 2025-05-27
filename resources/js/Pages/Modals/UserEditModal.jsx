@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import '../../../css/modals.css'
 import '../../../css/forms.css'
 import { useForm, usePage } from '@inertiajs/react';
@@ -7,18 +7,11 @@ import { useForm, usePage } from '@inertiajs/react';
 export default function UserEditModal() {
   const [showModal, setShowModal] = useState(false);
 
-  // if (!showModal) return null; //! Returns null is "show" is false
-
   const toggleModal = () => {
     setShowModal(!showModal);
   }
 
-  const { props } = usePage();
-  const { my_messages } = props;
-
-  // console.log("GENERAL ERROR === " + JSON.stringify(props));
-
-  const { data, setData, post, processing, progress, errors, setError, clearErrors, wasSuccessful } = useForm({
+  const { data, setData, post, processing, progress, errors, clearErrors, wasSuccessful } = useForm({
     name: '',
     email: '',
     msisdn: ''
@@ -26,7 +19,6 @@ export default function UserEditModal() {
 
   const onValueChange = (e) => {
     clearErrors(e.target.name)
-    // setError(e.target.name, '');
     setData(e.target.name, e.target.value)
   }
 
@@ -45,8 +37,6 @@ export default function UserEditModal() {
     });
   };
 
-  // if (!showModal) return null;
-
   return (
     <>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -58,7 +48,7 @@ export default function UserEditModal() {
         <div className="modal-backdrop">
           <div className="modal-box">
             <div className="modal-header">
-              <h5 className="modal-title">Users List</h5>
+              <h5 className="modal-title">Add User</h5>
               <button className="modal-close" onClick={() => setShowModal(false)}>&times;</button>
             </div>
             <div className="modal-body">
