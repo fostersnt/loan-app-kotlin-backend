@@ -26,30 +26,29 @@ export default function UserEditModal() {
     }
   });
 
-  const { data, setData, post, processing, progress, errors, setError } = useForm({
+  const { data, setData, post, processing, progress, errors, setError, clearErrors } = useForm({
     name: '',
     email: '',
     msisdn: ''
   })
 
   const onValueChange = (e) => {
-    setError(e.target.name, '');
+    clearErrors(e.target.name)
+    // setError(e.target.name, '');
     setData(e.target.name, e.target.value)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTimeout(() => {
-      post('/dashboard/users/create', {
-        onSuccess: () => {
-          setData({})
-          setShowModal(false)
-        },
-        onError: () => {
-          console.log("INCOMING ERRORS");
-        }
-      });
-    }, 2000)
+    post('/dashboard/users/create', {
+      onSuccess: () => {
+        setData({})
+        setShowModal(false)
+      },
+      onError: () => {
+        console.log("INCOMING ERRORS");
+      }
+    });
   };
 
   // if (!showModal) return null;
