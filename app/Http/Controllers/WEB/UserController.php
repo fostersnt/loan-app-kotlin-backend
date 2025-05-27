@@ -43,6 +43,7 @@ class UserController extends Controller
     public function Create(Request $request)
     {
         try {
+            $dd = 1 .
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'email' => 'required|string',
@@ -57,7 +58,7 @@ class UserController extends Controller
             // session()->flash("success", "successful");
             return redirect()->route('users.index')->with('success_message', 'User created successfully');
         } catch (\Throwable $th) {
-            return back()->with('error_message', 'Unable to create user');
+            return back()->withErrors(['message' => 'Unable to create user']);
         }
 
         Log::info("USER DATA === " . json_encode($request->all()));

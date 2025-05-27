@@ -16,6 +16,9 @@ export default function UserEditModal() {
   const { props } = usePage();
   const { my_messages } = props;
 
+  console.log("GENERAL ERROR === " + JSON.stringify(props.errors));
+  
+
 
   const successMessage = my_messages?.success_message
   const errorMessage = my_messages?.error_message
