@@ -74,7 +74,7 @@ export default function UserEditModal() {
                     type="text"
                     id="name"
                     name="name"
-                    className="form-control"
+                    className={`form-control ${errors.name ? 'red-border' : ''}`}
                     value={data.name}
                     onChange={(e) => onValueChange(e)}
                   // required
@@ -89,7 +89,7 @@ export default function UserEditModal() {
                     // type="email"
                     id="email"
                     name="email"
-                    className="form-control"
+                    className={`form-control ${errors.email ? 'red-border' : ''}`}
                     value={data.email}
                     onChange={(e) => onValueChange(e)}
                   // required
@@ -104,7 +104,7 @@ export default function UserEditModal() {
                     type="tel"
                     id="msisdn"
                     name="msisdn"
-                    className="form-control"
+                    className={`form-control ${errors.msisdn ? 'red-border' : ''}`}
                     value={data.msisdn}
                     onChange={(e) => onValueChange(e)}
                     // required
