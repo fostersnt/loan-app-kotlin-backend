@@ -9,6 +9,25 @@
     font-weight: normal;
 }
 
+/* resources/css/app.css */
+
+/* Inertia Progress Bar Custom Styles */
+#nprogress {
+    /* height: 25px !important; */
+    width: 100%;
+    background-color: #3498db;
+}
+
+#nprogress .bar {
+    height: 10px !important;
+    background-color: #f55d4d;
+}
+
+#progress .bar {
+    transition: width 0.3s ease;
+}
+
+
 /* body {
 } */
 
