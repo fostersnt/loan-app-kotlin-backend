@@ -7,6 +7,8 @@ createInertiaApp({
     const pages = import.meta.glob('./Pages/**/*.jsx', { eager: true })
     return pages[`./Pages/${name}.jsx`]
   },
+  title: title => 'Loan App',
+  // title: title => `${title} - App`,
   setup({ el, App, props }) {
     createRoot(el).render(<App {...props} />)
   },

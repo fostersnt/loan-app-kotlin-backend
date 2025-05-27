@@ -1,7 +1,7 @@
 // // resources/js/Layouts/AppLayout.jsx
 import React, { useState } from 'react';
 import '../../css/app.css';
-import { Link, usePage } from '@inertiajs/react';
+import { Head, Link, usePage } from '@inertiajs/react';
 import ErrorBoundary from '../Pages/ErrorBoundary';
 
 const AuthLayout = ({ children }) => {
@@ -18,6 +18,11 @@ const AuthLayout = ({ children }) => {
 
   return (
     <div className={`layout-container`}>
+      {/* <Head>
+        <title>Loan App</title>
+        <meta head-key="description" name="description" content="This is the default description" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      </Head> */}
       <ErrorBoundary>
         {/* Sidebar */}
         <div className={`sidebar ${isOpen ? 'open' : ''}`}>
