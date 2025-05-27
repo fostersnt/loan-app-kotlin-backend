@@ -39,15 +39,17 @@ export default function UserEditModal() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    post('/dashboard/users/create', {
-      onSuccess: () => {
-        setData({})
-        setShowModal(false)
-      },
-      onError: () => {
-        console.log("INCOMING ERRORS");
-      }
-    });
+    setTimeout(() => {
+      post('/dashboard/users/create', {
+        onSuccess: () => {
+          setData({})
+          setShowModal(false)
+        },
+        onError: () => {
+          console.log("INCOMING ERRORS");
+        }
+      });
+    }, 2000)
   };
 
   // if (!showModal) return null;
