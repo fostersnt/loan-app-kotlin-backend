@@ -115,7 +115,7 @@ export default function UserEditModal() {
                   <span className='error-message-style'>{errors?.msisdn}</span>
                 </div>
 
-                <div className="form-group text-end">
+                <div className="form-group submit_btn">
                   <button type="submit" className="btn" disabled={processing}>Submit</button>
                 </div>
               </form>
