@@ -4,17 +4,25 @@ import '../../../css/forms.css'
 import { useForm, usePage } from '@inertiajs/react';
 
 
-export default function UserEditModal({ show, onClose }) {
+export default function UserEditModal() {
+  const [showModal, setShowModal] = useState(false);
 
-  if (!show) return null; //! Returns null is "show" is false
+  // if (!showModal) return null; //! Returns null is "show" is false
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  }
 
   const { props } = usePage();
   const { my_messages } = props;
 
+
+  const successMessage = my_messages?.success_message
+  const errorMessage = my_messages?.error_message
+
   useEffect(() => {
     if (my_messages.success_message != null) {
       console.log('SUCCESS MESSAGE === ' + my_messages.success_message);
-      // console.log('ERROR MESSAGE === ' + my_messages.error_message);
     }
   });
 
@@ -31,69 +39,87 @@ export default function UserEditModal({ show, onClose }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log("USER DATA === " + JSON.stringify(data));
-    post('/dashboard/users/create');
+    post('/dashboard/users/create', {
+      onSuccess: () => {
+        setData({})
+        setShowModal(false)
+      },
+      onError: () => {
+        console.log("INCOMING ERRORS");
+      }
+    });
   };
 
+  // if (!showModal) return null;
+
   return (
-    <div className="modal-backdrop">
-      <div className="modal-box">
-        <div className="modal-header">
-          <h5 className="modal-title">Users List</h5>
-          <button className="modal-close" onClick={onClose}>&times;</button>
-        </div>
-        <div className="modal-body">
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="name" className="form-label">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                className="form-control"
-                value={data.name}
-                onChange={(e) => onValueChange(e)}
-              // required
-              />
-              {errors.name && <div>{errors.name}</div>}
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="email" className="form-label">Email</label>
-              <input
-                // type="email"
-                id="email"
-                name="email"
-                className="form-control"
-                value={data.email}
-                onChange={(e) => onValueChange(e)}
-              // required
-              />
-              {errors.email && <div>{errors.email}</div>}
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="msisdn" className="form-label">MSISDN</label>
-              <input
-                type="tel"
-                id="msisdn"
-                name="msisdn"
-                className="form-control"
-                value={data.msisdn}
-                onChange={(e) => onValueChange(e)}
-                // required
-                // pattern="[0-9]{10,15}"
-                placeholder="e.g. 233501234567"
-              />
-              {errors.msisdn && <div>{errors.msisdn}</div>}
-            </div>
-
-            <div className="form-group text-end">
-              <button type="submit" className="btn" disabled={processing}>Submit</button>
-            </div>
-          </form>
-        </div>
+    <>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <h3>Users List</h3>
+        <button onClick={() => toggleModal()} style={{ backgroundColor: '#34495e', color: 'white', fontWeight: 'bold', width: '100px', padding: '10px', border: '0px', cursor: 'pointer' }}>Add
+        </button>
       </div>
-    </div>
+      {showModal &&
+        <div className="modal-backdrop">
+          <div className="modal-box">
+            <div className="modal-header">
+              <h5 className="modal-title">Users List</h5>
+              <button className="modal-close" onClick={() => setShowModal(false)}>&times;</button>
+            </div>
+            <div className="modal-body">
+              <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <label htmlFor="name" className="form-label">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    className="form-control"
+                    value={data.name}
+                    onChange={(e) => onValueChange(e)}
+                  // required
+                  />
+                  {errors.name && <div>{errors.name}</div>}
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="email" className="form-label">Email</label>
+                  <input
+                    // type="email"
+                    id="email"
+                    name="email"
+                    className="form-control"
+                    value={data.email}
+                    onChange={(e) => onValueChange(e)}
+                  // required
+                  />
+                  {errors.email && <div>{errors.email}</div>}
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="msisdn" className="form-label">MSISDN</label>
+                  <input
+                    type="tel"
+                    id="msisdn"
+                    name="msisdn"
+                    className="form-control"
+                    value={data.msisdn}
+                    onChange={(e) => onValueChange(e)}
+                    // required
+                    // pattern="[0-9]{10,15}"
+                    placeholder="e.g. 233501234567"
+                  />
+                  {errors.msisdn && <div>{errors.msisdn}</div>}
+                </div>
+
+                <div className="form-group text-end">
+                  <button type="submit" className="btn" disabled={processing}>Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      }
+    </>
   );
 }

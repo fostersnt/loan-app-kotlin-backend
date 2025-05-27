@@ -5,10 +5,9 @@ import DataTable from 'react-data-table-component';
 import EditAction from '../Actions/EditAction';
 import DeleteAction from '../Actions/DeleteAction';
 import UserEditModal from '../Modals/UserEditModal';
-// import UserEditModal from '../Modals/UserEditModal';
 
 const ViewUsers = ({ users }) => {
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
 
   const columns = [
     {
@@ -41,27 +40,20 @@ const ViewUsers = ({ users }) => {
 
   return (
     <div>
-      {/* <h1>All Users Here</h1> */}
-      {/* <h2 className="">{users}</h2> */}
-      {/* <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <button onClick={() => setShowModal(true)} style={{ backgroundColor: '#34495e', color: 'white', fontWeight: 'bold', width: '100px', padding: '10px', border: '0px', cursor:'pointer' }}>Add
-        </button>
-      </div> */}
+      <UserEditModal/>
       <DataTable
-        title={<div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <h3>Users List</h3>
-        <button onClick={() => setShowModal(true)} style={{ backgroundColor: '#34495e', color: 'white', fontWeight: 'bold', width: '100px', padding: '10px', border: '0px', cursor:'pointer' }}>Add
-        </button>
-      </div>}
+        // title={<div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        //   <h3>Users List</h3>
+        //   <button onClick={() => setShowModal(true)} style={{ backgroundColor: '#34495e', color: 'white', fontWeight: 'bold', width: '100px', padding: '10px', border: '0px', cursor: 'pointer' }}>Add
+        //   </button>
+        // </div>}
         columns={columns}
         data={users}
         pagination
         selectableRows
         highlightOnHover
       />
-      {/* <GeneralModal show={showModal} title={'Edit User'} onClose={() => setShowModal(false)}> */}
-        <UserEditModal show={showModal} onClose={() => setShowModal(false)}/>
-      {/* </GeneralModal> */}
+      {/* <UserEditModal show={showModal} onClose={() => setShowModal(false)} /> */}
     </div>
   );
 };
