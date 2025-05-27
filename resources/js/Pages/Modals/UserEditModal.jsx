@@ -16,20 +16,9 @@ export default function UserEditModal() {
   const { props } = usePage();
   const { my_messages } = props;
 
-  console.log("GENERAL ERROR === " + JSON.stringify(props.errors));
-  
+  // console.log("GENERAL ERROR === " + JSON.stringify(props));
 
-
-  const successMessage = my_messages?.success_message
-  const errorMessage = my_messages?.error_message
-
-  useEffect(() => {
-    if (my_messages.success_message != null) {
-      console.log('SUCCESS MESSAGE === ' + my_messages.success_message);
-    }
-  });
-
-  const { data, setData, post, processing, progress, errors, setError, clearErrors } = useForm({
+  const { data, setData, post, processing, progress, errors, setError, clearErrors, wasSuccessful } = useForm({
     name: '',
     email: '',
     msisdn: ''
@@ -46,6 +35,8 @@ export default function UserEditModal() {
     post('/dashboard/users/create', {
       onSuccess: () => {
         setData({})
+        console.log("WAS SUCCESSFUL === " + wasSuccessful);
+        
         setShowModal(false)
       },
       onError: () => {
