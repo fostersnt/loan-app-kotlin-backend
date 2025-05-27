@@ -72,8 +72,8 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::get('/', [UserController::class, 'dashboard'])->name('dashboard');
     Route::get('/logout', [UserController::class, 'userLogout'])->name('logout');
 
-    Route::controller(UserController::class)->prefix('users')->group(function () {
-        Route::get('', 'index');
-        Route::get('create', 'showCreate');
+    Route::prefix('users')->group(function () {
+        Route::get('/', [UserController::class, 'Index']);
+        Route::post('/create', [UserController::class, 'Create']);
     });
 });

@@ -1,22 +1,24 @@
 // Form.jsx
 import React, { useState } from 'react';
 import '../../../css/forms.css'
+import { router } from '@inertiajs/react';
+import { User } from 'lucide-react';
 
 export default function UserForm({ onSubmit }) {
-  const [form, setForm] = useState({
+  const [user, setUser] = useState({
     name: '',
     email: '',
     msisdn: '',
   });
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("USER DATA === " + JSON.stringify(form));
-    
+    console.log("USER DATA === " + JSON.stringify(user));
+    router.post('/dashboard/users/create', JSON.stringify(user));
     // onSubmit(form); // You can send this to backend via Inertia or fetch
   };
 
@@ -29,7 +31,7 @@ export default function UserForm({ onSubmit }) {
           id="name"
           name="name"
           className="form-control"
-          value={form.name}
+          value={user.name}
           onChange={handleChange}
           required
         />
@@ -42,7 +44,7 @@ export default function UserForm({ onSubmit }) {
           id="email"
           name="email"
           className="form-control"
-          value={form.email}
+          value={user.email}
           onChange={handleChange}
           required
         />
@@ -55,7 +57,7 @@ export default function UserForm({ onSubmit }) {
           id="msisdn"
           name="msisdn"
           className="form-control"
-          value={form.msisdn}
+          value={user.msisdn}
           onChange={handleChange}
           required
           pattern="[0-9]{10,15}"

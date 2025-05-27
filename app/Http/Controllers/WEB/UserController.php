@@ -14,9 +14,8 @@ use function PHPSTORM_META\map;
 
 class UserController extends Controller
 {
-    public function index()
+    public function Index()
     {
-        sleep(1);
         $usersData = User::all();
 
         $users = $usersData->map(function ($user) {
@@ -36,19 +35,19 @@ class UserController extends Controller
         if (Auth::user()) {
             return Inertia::render('Home');
         } else {
-            return redirect()->route('show.login.page');
+            return Inertia::render('Auth/LoginPage');
         }
     }
 
-    public function showCreate()
+    public function Create(Request $request)
     {
-        return Inertia::render('User/CreateUser');
+        Log::info("USER DATA === " . json_encode($request->all()));
     }
 
     public function showLoginPage()
     {
         if (Auth::user()) {
-            return redirect()->route('dashboard');
+            return to_route('dashboard');
         } else {
             return Inertia::render('Auth/LoginPage');
         }
@@ -63,7 +62,7 @@ class UserController extends Controller
         ]);
         // dd($validator);
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('dashboard');
+            return to_route('dashboard');
         } else {
             return back()->withErrors([
                 'email' => 'The provided credentials do not match our records.',
