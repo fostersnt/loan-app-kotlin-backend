@@ -15,7 +15,9 @@ export default function UserForm({ onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(form); // You can send this to backend via Inertia or fetch
+    console.log("USER DATA === " + JSON.stringify(form));
+    
+    // onSubmit(form); // You can send this to backend via Inertia or fetch
   };
 
   return (
