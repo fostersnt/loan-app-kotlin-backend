@@ -61,7 +61,7 @@ const ViewUsers = ({ users }) => {
         selectableRows
         highlightOnHover
       />
-      <GeneralModal show={showModal} onClose={() => setShowModal(false)} title={'Edit User'}>
+      <GeneralModal show={showModal} title={'Edit User'} onClose={() => setShowModal(false)}>
         <UserForm onSubmit={{}}/>
       </GeneralModal>
     </div>

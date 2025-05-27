@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import '../../../css/modals.css'
 
-export default function GeneralModal({ show, onClose, children, title }) {
+
+export default function GeneralModal({show, title, onClose, children }) {
+
   if (!show) return null;
 
   return (
