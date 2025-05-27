@@ -1,12 +1,19 @@
 // Form.jsx
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../../css/forms.css'
-import { User } from 'lucide-react';
 import { useForm, usePage } from '@inertiajs/react';
 
-export default function UserForm({ onSubmit }) {
+export default function UserForm() {
 
-  const flashData = usePage();
+  const { props } = usePage();
+  const { my_messages } = props;
+
+  useEffect(() => {
+    if (my_messages.success_message != null) {
+      console.log('SUCCESS MESSAGE === ' + my_messages.success_message);
+    // console.log('ERROR MESSAGE === ' + my_messages.error_message);
+    }
+  });
 
   const { data, setData, post, processing, progress, errors, setError } = useForm({
     name: '',
@@ -21,7 +28,6 @@ export default function UserForm({ onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("FLASH DATA === " + JSON.stringify(flashData.props));
     // console.log("USER DATA === " + JSON.stringify(data));
     post('/dashboard/users/create');
   };

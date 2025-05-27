@@ -73,7 +73,7 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::get('/logout', [UserController::class, 'userLogout'])->name('logout');
 
     Route::prefix('users')->group(function () {
-        Route::get('/', [UserController::class, 'Index']);
+        Route::get('/', [UserController::class, 'Index'])->name('users.index');
         Route::post('/create', [UserController::class, 'Create']);
     });
 });

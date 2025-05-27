@@ -1,13 +1,11 @@
 // resources/js/Pages/User/CreateUser.jsx
 import React, { useState } from 'react';
 import AuthLayout from '../../Layouts/AuthLayout';  // Ensure this path is correct
-import { Link } from '@inertiajs/react';
 import DataTable from 'react-data-table-component';
 import EditAction from '../Actions/EditAction';
 import DeleteAction from '../Actions/DeleteAction';
-import UserEditModal from '../Modals/GeneralModal';
-import GeneralModal from '../Modals/GeneralModal';
-import UserForm from './UserForm';
+import UserEditModal from '../Modals/UserEditModal';
+// import UserEditModal from '../Modals/UserEditModal';
 
 const ViewUsers = ({ users }) => {
   const [showModal, setShowModal] = useState(false);
@@ -61,9 +59,9 @@ const ViewUsers = ({ users }) => {
         selectableRows
         highlightOnHover
       />
-      <GeneralModal show={showModal} title={'Edit User'} onClose={() => setShowModal(false)}>
-        <UserForm onSubmit={{}}/>
-      </GeneralModal>
+      {/* <GeneralModal show={showModal} title={'Edit User'} onClose={() => setShowModal(false)}> */}
+        <UserEditModal show={showModal} onClose={() => setShowModal(false)}/>
+      {/* </GeneralModal> */}
     </div>
   );
 };

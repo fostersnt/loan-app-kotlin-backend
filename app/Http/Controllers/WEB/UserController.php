@@ -55,7 +55,7 @@ class UserController extends Controller
 
             User::query()->create($request->all());
             // session()->flash("success", "successful");
-            return back()->with('success_message', 'User created successfully');
+            return redirect()->route('users.index')->with('success_message', 'User created successfully');
         } catch (\Throwable $th) {
             return back()->with('error_message', 'Unable to create user');
         }
