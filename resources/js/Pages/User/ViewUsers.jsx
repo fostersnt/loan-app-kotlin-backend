@@ -5,7 +5,9 @@ import { Link } from '@inertiajs/react';
 import DataTable from 'react-data-table-component';
 import EditAction from '../Actions/EditAction';
 import DeleteAction from '../Actions/DeleteAction';
-import UserEditModal from '../Modals/UserEditModal';
+import UserEditModal from '../Modals/GeneralModal';
+import GeneralModal from '../Modals/GeneralModal';
+import UserForm from './UserForm';
 
 const ViewUsers = ({ users }) => {
   const [showModal, setShowModal] = useState(false);
@@ -55,10 +57,9 @@ const ViewUsers = ({ users }) => {
         selectableRows
         highlightOnHover
       />
-      <UserEditModal show={showModal} onClose={() => setShowModal(false)}>
-        <h2 className="text-lg font-semibold mb-2">This is a modal</h2>
-        <p>Some content goes here...</p>
-      </UserEditModal>
+      <GeneralModal show={showModal} onClose={() => setShowModal(false)} title={'Edit User'}>
+        <UserForm onSubmit={{}}/>
+      </GeneralModal>
     </div>
   );
 };
