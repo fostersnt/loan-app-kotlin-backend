@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 
 use function PHPSTORM_META\map;
@@ -41,6 +42,18 @@ class UserController extends Controller
 
     public function Create(Request $request)
     {
+        $validator = Validator::make($request->all(),[
+            'name' => 'required',
+            'email' => 'required|string',
+            'msisdn' => 'required|string'
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator->errors());
+        }
+
+        User::query()->create($request->all());
+
         Log::info("USER DATA === " . json_encode($request->all()));
     }
 

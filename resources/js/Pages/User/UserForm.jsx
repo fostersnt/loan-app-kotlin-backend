@@ -1,25 +1,26 @@
 // Form.jsx
 import React, { useState } from 'react';
 import '../../../css/forms.css'
-import { router } from '@inertiajs/react';
 import { User } from 'lucide-react';
+import { useForm } from '@inertiajs/react';
 
 export default function UserForm({ onSubmit }) {
-  const [user, setUser] = useState({
+
+  const { data, setData, post, processing, progress, errors, setError } = useForm({
     name: '',
     email: '',
-    msisdn: '',
-  });
+    msisdn: ''
+  })
 
-  const handleChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
-  };
+  const onValueChange = (e) => {
+    setError(e.target.name, '');
+    setData(e.target.name, e.target.value)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("USER DATA === " + JSON.stringify(user));
-    router.post('/dashboard/users/create', JSON.stringify(user));
-    // onSubmit(form); // You can send this to backend via Inertia or fetch
+    console.log("USER DATA === " + JSON.stringify(data));
+    post('/dashboard/users/create');
   };
 
   return (
@@ -31,23 +32,25 @@ export default function UserForm({ onSubmit }) {
           id="name"
           name="name"
           className="form-control"
-          value={user.name}
-          onChange={handleChange}
-          required
+          value={data.name}
+          onChange={(e) => onValueChange(e)}
+          // required
         />
+        {errors.name && <div>{errors.name}</div>}
       </div>
 
       <div className="form-group">
         <label htmlFor="email" className="form-label">Email</label>
         <input
-          type="email"
+          // type="email"
           id="email"
           name="email"
           className="form-control"
-          value={user.email}
-          onChange={handleChange}
-          required
+          value={data.email}
+          onChange={(e) => onValueChange(e)}
+          // required
         />
+        {errors.email && <div>{errors.email}</div>}
       </div>
 
       <div className="form-group">
@@ -57,16 +60,17 @@ export default function UserForm({ onSubmit }) {
           id="msisdn"
           name="msisdn"
           className="form-control"
-          value={user.msisdn}
-          onChange={handleChange}
-          required
-          pattern="[0-9]{10,15}"
+          value={data.msisdn}
+          onChange={(e) => onValueChange(e)}
+          // required
+          // pattern="[0-9]{10,15}"
           placeholder="e.g. 233501234567"
         />
+        {errors.msisdn && <div>{errors.msisdn}</div>}
       </div>
 
       <div className="form-group text-end">
-        <button type="submit" className="btn">Submit</button>
+        <button type="submit" className="btn" disabled={processing}>Submit</button>
       </div>
     </form>
   );
