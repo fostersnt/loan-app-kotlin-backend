@@ -7,7 +7,7 @@ export default function UserEditModal({ show, onClose, children }) {
     <div className="modal-backdrop">
       <div className="modal-box">
         <div className="modal-header">
-          <h5 className="modal-title">Modal Title</h5>
+          <h5 className="modal-title">Edit User</h5>
           <button className="modal-close" onClick={onClose}>&times;</button>
         </div>
         <div className="modal-body">
