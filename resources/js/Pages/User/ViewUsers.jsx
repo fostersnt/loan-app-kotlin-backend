@@ -45,12 +45,16 @@ const ViewUsers = ({ users }) => {
     <div>
       {/* <h1>All Users Here</h1> */}
       {/* <h2 className="">{users}</h2> */}
-      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <button onClick={() => setShowModal(true)} style={{ backgroundColor: '#3498db', color: 'white', fontWeight: 'bold', width: '100px', padding: '10px', border: '0px', cursor:'pointer' }}>Add
+      {/* <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <button onClick={() => setShowModal(true)} style={{ backgroundColor: '#34495e', color: 'white', fontWeight: 'bold', width: '100px', padding: '10px', border: '0px', cursor:'pointer' }}>Add
         </button>
-      </div>
+      </div> */}
       <DataTable
-        title="User List"
+        title={<div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <h3>Users List</h3>
+        <button onClick={() => setShowModal(true)} style={{ backgroundColor: '#34495e', color: 'white', fontWeight: 'bold', width: '100px', padding: '10px', border: '0px', cursor:'pointer' }}>Add
+        </button>
+      </div>}
         columns={columns}
         data={users}
         pagination
