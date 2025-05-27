@@ -42,6 +42,8 @@ class UserController extends Controller
 
     public function Create(Request $request)
     {
+        $data = null;
+
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
@@ -54,12 +56,15 @@ class UserController extends Controller
             }
 
             User::query()->create($request->all());
-            return redirect()->route('users.index')->with('success_message', 'User created successfully');
+
+            $data = json_encode($request->all());
+
+            Log::info("USER CREATE [$data], Message [User created successfully]");
         } catch (\Throwable $th) {
+            $errorMessage = $th->getMessage();
+            Log::info("USER CREATE [$data], Message [$errorMessage]");
             return back()->withErrors(['message' => 'Unable to create user']);
         }
-
-        Log::info("USER DATA === " . json_encode($request->all()));
     }
 
     public function showLoginPage()
