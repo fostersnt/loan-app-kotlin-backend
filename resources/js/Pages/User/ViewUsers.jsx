@@ -1,13 +1,14 @@
 // resources/js/Pages/User/CreateUser.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import AuthLayout from '../../Layouts/AuthLayout';  // Ensure this path is correct
 import { Link } from '@inertiajs/react';
 import DataTable from 'react-data-table-component';
 import EditAction from '../Actions/EditAction';
 import DeleteAction from '../Actions/DeleteAction';
+import UserEditModal from '../Modals/UserEditModal';
 
 const ViewUsers = ({ users }) => {
-  console.log("DATA === " + users);
+  const [showModal, setShowModal] = useState(false);
 
   const columns = [
     {
@@ -26,9 +27,9 @@ const ViewUsers = ({ users }) => {
       sortable: true,
     },
     {
-      name: <h2 style={{width:'100px', display: "flex", justifyContent: "space-around"}}>Action</h2>,
+      name: <h2 style={{ width: '100px', display: "flex", justifyContent: "space-around" }}>Action</h2>,
       selector: row => row.id != null ?
-        <div style={{width: '100px', display: "flex", justifyContent: "space-around"}}>
+        <div style={{ width: '100px', display: "flex", justifyContent: "space-around" }}>
           <EditAction onEdit={{}} label={''} />
           <DeleteAction onEdit={{}} label={''} />
         </div> :
@@ -43,8 +44,8 @@ const ViewUsers = ({ users }) => {
       {/* <h1>All Users Here</h1> */}
       {/* <h2 className="">{users}</h2> */}
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <Link href="/dashboard/users/create" style={{ backgroundColor: '#3498db', color: 'white', fontWeight: 'bold', width: '100px', padding: '10px', border: '0px', display: 'flex', justifyContent: 'center', textDecoration: 'none' }}>Add
-        </Link>
+        <button onClick={() => setShowModal(true)} style={{ backgroundColor: '#3498db', color: 'white', fontWeight: 'bold', width: '100px', padding: '10px', border: '0px', cursor:'pointer' }}>Add
+        </button>
       </div>
       <DataTable
         title="User List"
@@ -54,6 +55,10 @@ const ViewUsers = ({ users }) => {
         selectableRows
         highlightOnHover
       />
+      <UserEditModal show={showModal} onClose={() => setShowModal(false)}>
+        <h2 className="text-lg font-semibold mb-2">This is a modal</h2>
+        <p>Some content goes here...</p>
+      </UserEditModal>
     </div>
   );
 };
