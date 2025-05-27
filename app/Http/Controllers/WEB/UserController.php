@@ -57,7 +57,10 @@ class UserController extends Controller
     public function userLogin(Request $request)
     {
         Log::info("LOGIN DATA === " . json_encode($request->all()));
-        $validator = validator($request->all());
+        $request->validator([
+            'email' => 'required|string',
+            'password' => 'required|string'
+        ]);
         // dd($validator);
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->route('dashboard');
