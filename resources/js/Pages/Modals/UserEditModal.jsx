@@ -79,7 +79,8 @@ export default function UserEditModal() {
                     onChange={(e) => onValueChange(e)}
                   // required
                   />
-                  {errors.name && <div>{errors.name}</div>}
+                  {/* {errors.name && <span>{errors.name}</span>} */}
+                  <span className='error-message-style'>{errors?.name}</span>
                 </div>
 
                 <div className="form-group">
@@ -93,7 +94,8 @@ export default function UserEditModal() {
                     onChange={(e) => onValueChange(e)}
                   // required
                   />
-                  {errors.email && <div>{errors.email}</div>}
+                  {/* {errors.email && <div>{errors.email}</div>} */}
+                  <span className='error-message-style'>{errors?.email}</span>
                 </div>
 
                 <div className="form-group">
@@ -109,7 +111,8 @@ export default function UserEditModal() {
                     // pattern="[0-9]{10,15}"
                     placeholder="e.g. 233501234567"
                   />
-                  {errors.msisdn && <div>{errors.msisdn}</div>}
+                  {/* {errors.msisdn && <div>{errors.msisdn}</div>} */}
+                  <span className='error-message-style'>{errors?.msisdn}</span>
                 </div>
 
                 <div className="form-group text-end">
