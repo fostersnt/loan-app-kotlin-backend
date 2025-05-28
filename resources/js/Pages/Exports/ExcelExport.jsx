@@ -1,7 +1,7 @@
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
 
-export default function UserExcelExport (data) {
+export default function ExcelExport (data, fileName) {
   // const data = [
   //   { name: 'John', age: 30 },
   //   { name: 'Jane', age: 25 },
@@ -13,5 +13,5 @@ export default function UserExcelExport (data) {
 
   const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
   const dataBlob = new Blob([excelBuffer], { type: 'application/octet-stream' });
-  saveAs(dataBlob, 'export.xlsx');
+  saveAs(dataBlob, `${fileName}.xlsx`);
 };

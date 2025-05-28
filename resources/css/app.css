@@ -27,6 +27,41 @@
     transition: width 0.3s ease;
 }
 
+/* EXPORT BUTTONS */
+.data-export {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+    /* padding: 2rem; */
+    /* background-color: #f9f9f9; */
+    border-radius: 12px;
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+    /* max-width: 600px; */
+    /* margin: 2rem auto; */
+}
+
+.data-export button {
+    width: 80px;
+    background-color: #34495e;
+    color: white;
+    border: none;
+    padding: 0.75rem 0.5rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.data-export button:hover {
+    background-color: #4e6d8d;
+    transform: translateY(-2px);
+}
+
+.data-export button:active {
+    transform: scale(0.98);
+}
+/* END OF EXPORT BUTTONS */
 
 /* body {
 } */
@@ -75,17 +110,17 @@
     padding-left: 0;
 }
 
-.sidebar ul li{
+.sidebar ul li {
     /* margin-bottom: 20px; */
 }
 
-.sidebar-item:hover{
+.sidebar-item:hover {
     background-color: #555;
 }
 
 .sidebar-item.active {
-  background-color: #3498db; /* Change to any color you prefer */
-  color: white;
+    background-color: #3498db; /* Change to any color you prefer */
+    color: white;
 }
 
 .sidebar-item {
@@ -116,7 +151,7 @@
     margin-left: 250px; /* Shift content to the right when sidebar is open */
 }
 
-.mainChartContainer{
+.mainChartContainer {
     width: 100%;
     min-width: 300px;
     /* min-height: 300px; */

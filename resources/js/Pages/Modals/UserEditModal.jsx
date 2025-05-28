@@ -2,9 +2,10 @@ import { useState } from 'react';
 import '../../../css/modals.css'
 import '../../../css/forms.css'
 import { useForm, usePage } from '@inertiajs/react';
+import ExcelExport from '../Exports/ExcelExport';
 
 
-export default function UserEditModal() {
+export default function UserEditModal({usersData}) {
   const [showModal, setShowModal] = useState(false);
 
   const toggleModal = () => {
@@ -39,8 +40,12 @@ export default function UserEditModal() {
 
   return (
     <>
+    <h3 style={{margin: '20px'}}>Users List</h3>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <h3>Users List</h3>
+        <div className='data-export'>
+        <button onClick={() => ExcelExport(usersData, 'users_data_excel')}>EXCEL</button>
+        <button onClick={() => ExcelExport(usersData, 'users_data_pdf')}>PDF</button>
+      </div>
         <button onClick={() => toggleModal()} style={{ backgroundColor: '#34495e', color: 'white', fontWeight: 'bold', width: '100px', padding: '10px', border: '0px', cursor: 'pointer' }}>Add
         </button>
       </div>
