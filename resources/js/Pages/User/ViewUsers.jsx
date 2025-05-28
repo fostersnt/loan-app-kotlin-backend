@@ -5,6 +5,7 @@ import DataTable from 'react-data-table-component';
 import EditAction from '../Actions/EditAction';
 import DeleteAction from '../Actions/DeleteAction';
 import UserEditModal from '../Modals/UserEditModal';
+import UserExcelExport from '../Exports/UserExcelExport';
 
 const ViewUsers = ({ users }) => {
   // const [showModal, setShowModal] = useState(false);
@@ -40,6 +41,9 @@ const ViewUsers = ({ users }) => {
 
   return (
     <div>
+      <div>
+        <button onClick={() => UserExcelExport(users)}>Export Users</button>
+      </div>
       <UserEditModal/>
       <DataTable
         // title={<div style={{ display: 'flex', justifyContent: 'space-between' }}>
