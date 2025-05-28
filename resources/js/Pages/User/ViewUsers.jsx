@@ -65,15 +65,14 @@ const ViewUsers = ({ users }) => {
           Delete Selected Rows
         </button>
       </div>
+      <div style={{ display: 'flex', justifyContent: 'space-between'}}>
+        <div className='data-export'>
+          <button onClick={() => ExcelExport(users, 'users_data_excel')}>EXCEL</button>
+        </div>
+        <UserCreateModal usersData={users} />
+      </div>
       <DataTable
-        title={
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <div className='data-export'>
-              <button onClick={() => ExcelExport(users, 'users_data_excel')}>EXCEL</button>
-            </div>
-            <UserCreateModal usersData={users} />
-          </div>
-        }
+        title={<div></div>}
         columns={columns}
         data={users}
         pagination
