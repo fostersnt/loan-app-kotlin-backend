@@ -47,9 +47,11 @@ const ViewUsers = ({ users }) => {
   return (
     <div>
       <UserEditModal usersData={users} />
-      <button onClick={() => console.log(selectedRows)}>
-        Do something with selected rows
-      </button>
+      <div style={{width: "100%", display: "flex", justifyContent: "flex-end", marginTop: "20px", marginBottom: "20px"}}>
+        <button className={selectedRows.length < 1 ? 'isDisabled' : 'selected-rows-btn'} disabled={selectedRows.length < 1} onClick={() => console.log(`SELECTED ROWS === ${JSON.stringify(selectedRows)}`)}>
+          Delete Selected Rows
+        </button>
+      </div>
       <DataTable
         columns={columns}
         data={users}

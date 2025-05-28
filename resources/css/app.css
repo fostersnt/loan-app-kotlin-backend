@@ -162,6 +162,38 @@
     flex-wrap: wrap;
 }
 
+.selected-rows-btn {
+    background-color: #e63946;
+    color: white;
+    border: none;
+    padding: 10px 10px;
+    /* font-weight: bold; */
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .selected-rows-btn:hover {
+    background-color: #d62828; /* darker red on hover */
+  }
+
+  .isDisabled{
+    background-color: rgb(206, 202, 202);
+    color: white;
+    border: none;
+    padding: 10px 10px;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .isDisabled:hover {
+    background-color: #dbd5d5; /* darker red on hover */
+  }
+
 /* Show the sidebar on large screens (>= 768px) */
 @media screen and (min-width: 768px) {
     .sidebar {
