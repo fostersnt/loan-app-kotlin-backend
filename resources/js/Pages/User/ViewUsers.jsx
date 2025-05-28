@@ -6,9 +6,11 @@ import EditAction from '../Actions/EditAction';
 import DeleteAction from '../Actions/DeleteAction';
 import UserEditModal from '../Modals/UserEditModal';
 import ExcelExport from '../Exports/ExcelExport';
+import { usePDF } from 'react-to-pdf';
 
 const ViewUsers = ({ users }) => {
   // const [showModal, setShowModal] = useState(false);
+  const { toPDF, targetRef } = usePDF({ filename: 'fileName' });
 
   const columns = [
     {
@@ -42,18 +44,21 @@ const ViewUsers = ({ users }) => {
   return (
     <div>
       <UserEditModal usersData={users} />
-      <DataTable
-        // title={<div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        //   <h3>Users List</h3>
-        //   <button onClick={() => setShowModal(true)} style={{ backgroundColor: '#34495e', color: 'white', fontWeight: 'bold', width: '100px', padding: '10px', border: '0px', cursor: 'pointer' }}>Add
-        //   </button>
-        // </div>}
-        columns={columns}
-        data={users}
-        pagination
-        selectableRows
-        highlightOnHover
-      />
+      {/* <button onClick={() => toPDF()}>Download PDF</button> */}
+      <div ref={targetRef}>
+        <DataTable
+          // title={<div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          //   <h3>Users List</h3>
+          //   <button onClick={() => setShowModal(true)} style={{ backgroundColor: '#34495e', color: 'white', fontWeight: 'bold', width: '100px', padding: '10px', border: '0px', cursor: 'pointer' }}>Add
+          //   </button>
+          // </div>}
+          columns={columns}
+          data={users}
+          pagination
+          selectableRows
+          highlightOnHover
+        />
+      </div>
       {/* <UserEditModal show={showModal} onClose={() => setShowModal(false)} /> */}
     </div>
   );
