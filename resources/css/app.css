@@ -175,7 +175,7 @@
   }
 
   .selected-rows-btn:hover {
-    background-color: #d62828; /* darker red on hover */
+    background-color: #d62828;
   }
 
   .isDisabled{
@@ -191,7 +191,7 @@
   }
 
   .isDisabled:hover {
-    background-color: #dbd5d5; /* darker red on hover */
+    background-color: #dbd5d5;
   }
 
 /* Show the sidebar on large screens (>= 768px) */
