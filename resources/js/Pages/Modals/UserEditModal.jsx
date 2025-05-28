@@ -4,7 +4,7 @@ import '../../../css/forms.css'
 import { useForm, usePage } from '@inertiajs/react';
 import ExcelExport from '../Exports/ExcelExport';
 
-export default function UserEditModal({usersData}) {
+export default function UserEditModal({ usersData }) {
   const [showModal, setShowModal] = useState(false);
 
   const toggleModal = () => {
@@ -28,7 +28,7 @@ export default function UserEditModal({usersData}) {
       onSuccess: () => {
         setData({})
         console.log("WAS SUCCESSFUL === " + wasSuccessful);
-        
+
         setShowModal(false)
       },
       onError: () => {
@@ -41,14 +41,18 @@ export default function UserEditModal({usersData}) {
 
   return (
     <>
-    <h3 style={{margin: '20px'}}>Users List</h3>
+      <h3 style={{ margin: '20px' }}>Users List</h3>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div className='data-export'>
-        <button onClick={() => ExcelExport(usersData, 'users_data_excel')}>EXCEL</button>
-        {/* <PdfExport data={usersData} fileName={'users_data_pdf'}/> */}
-      </div>
-        <button onClick={() => toggleModal()} style={{ backgroundColor: '#34495e', color: 'white', fontWeight: 'bold', width: '100px', padding: '10px', border: '0px', cursor: 'pointer' }}>Add
-        </button>
+          <button onClick={() => ExcelExport(usersData, 'users_data_excel')}>EXCEL</button>
+          {/* <PdfExport data={usersData} fileName={'users_data_pdf'}/> */}
+        </div>
+        <div>
+          <button onClick={() => toggleModal()} style={{ backgroundColor: '#34495e', color: 'white', fontWeight: 'bold', width: '100px', padding: '10px', border: '0px', cursor: 'pointer' }}>Add
+          </button>
+          <button onClick={() => toggleModal()} style={{ backgroundColor: '#34495e', color: 'white', fontWeight: 'bold', width: '100px', padding: '10px', border: '0px', cursor: 'pointer' }}>Add
+          </button>
+        </div>
       </div>
       {showModal &&
         <div className="modal-backdrop">

@@ -1,16 +1,13 @@
 // resources/js/Pages/User/CreateUser.jsx
-import React, { useState } from 'react';
 import AuthLayout from '../../Layouts/AuthLayout';  // Ensure this path is correct
 import DataTable from 'react-data-table-component';
 import EditAction from '../Actions/EditAction';
 import DeleteAction from '../Actions/DeleteAction';
 import UserEditModal from '../Modals/UserEditModal';
-import ExcelExport from '../Exports/ExcelExport';
-import { usePDF } from 'react-to-pdf';
+import { useState } from 'react';
 
 const ViewUsers = ({ users }) => {
-  // const [showModal, setShowModal] = useState(false);
-  const { toPDF, targetRef } = usePDF({ filename: 'fileName' });
+  const [selectedRows, setSelectedRows] = useState([]);
 
   const columns = [
     {
@@ -40,26 +37,27 @@ const ViewUsers = ({ users }) => {
     },
   ];
 
+  const handleSelectedRowsChange = (state) => {
+    // `state.selectedRows` contains the selected data
+    setSelectedRows(state.selectedRows);
+    // console.log('Selected rows:', state.selectedRows);
+  };
+
 
   return (
     <div>
       <UserEditModal usersData={users} />
-      {/* <button onClick={() => toPDF()}>Download PDF</button> */}
-      <div ref={targetRef}>
-        <DataTable
-          // title={<div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          //   <h3>Users List</h3>
-          //   <button onClick={() => setShowModal(true)} style={{ backgroundColor: '#34495e', color: 'white', fontWeight: 'bold', width: '100px', padding: '10px', border: '0px', cursor: 'pointer' }}>Add
-          //   </button>
-          // </div>}
-          columns={columns}
-          data={users}
-          pagination
-          selectableRows
-          highlightOnHover
-        />
-      </div>
-      {/* <UserEditModal show={showModal} onClose={() => setShowModal(false)} /> */}
+      <button onClick={() => console.log(selectedRows)}>
+        Do something with selected rows
+      </button>
+      <DataTable
+        columns={columns}
+        data={users}
+        pagination
+        selectableRows
+        onSelectedRowsChange={handleSelectedRowsChange}
+        highlightOnHover
+      />
     </div>
   );
 };
