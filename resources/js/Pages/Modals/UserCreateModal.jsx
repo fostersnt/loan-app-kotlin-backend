@@ -4,7 +4,7 @@ import '../../../css/forms.css'
 import { useForm, usePage } from '@inertiajs/react';
 import ExcelExport from '../Exports/ExcelExport';
 
-export default function UserEditModal({user}) {
+export default function UserCreateModal({ usersData }) {
   const [showModal, setShowModal] = useState(false);
 
   const toggleModal = () => {
@@ -28,7 +28,7 @@ export default function UserEditModal({user}) {
       onSuccess: () => {
         setData({})
         console.log("WAS SUCCESSFUL === " + wasSuccessful);
-        
+
         setShowModal(false)
       },
       onError: () => {
@@ -41,6 +41,10 @@ export default function UserEditModal({user}) {
 
   return (
     <>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <button onClick={() => toggleModal()} style={{ backgroundColor: '#34495e', color: 'white', fontWeight: 'bold', width: '100px', padding: '10px', border: '0px', cursor: 'pointer' }}>Add
+        </button>
+      </div>
       {showModal &&
         <div className="modal-backdrop">
           <div className="modal-box">
