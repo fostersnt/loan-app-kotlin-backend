@@ -6,17 +6,26 @@ import DeleteAction from '../Actions/DeleteAction';
 import { useState } from 'react';
 import UserCreateModal from '../Modals/UserCreateModal';
 import ExcelExport from '../Exports/ExcelExport';
+import UserEditModal from '../Modals/UserEditModal';
 
 const ViewUsers = ({ users }) => {
   const [selectedRows, setSelectedRows] = useState([]);
+  const [showEditModal, setShowEditModal] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
 
   const handleShowEditModal = (user_id) => {
-    users?.find((item) => {
+    console.log(`CURRENT USER === ${user_id}`);
+
+    const result = users?.find((item) => {
       if (item.id == user_id) {
-        setCurrentUser(item)
+        return item
+      } else {
+        return null;
       }
     })
+    setCurrentUser(result);
+    setShowEditModal(!showEditModal);
+    // console.log(`CURRENT USER === ${JSON.stringify(currentUser)}`);
   }
 
   const columns = [
@@ -39,7 +48,7 @@ const ViewUsers = ({ users }) => {
       name: <h2 style={{ width: '100px', display: "flex", justifyContent: "space-around" }}>Action</h2>,
       selector: row => row.id != null ?
         <div style={{ width: '100px', display: "flex", justifyContent: "space-around" }}>
-          <EditAction onEdit={{}} label={''} />
+          <EditAction action={() => handleShowEditModal(row.id)} label={''} />
           <DeleteAction onEdit={{}} label={''} />
         </div> :
         <h3>N/A</h3>,
@@ -53,10 +62,6 @@ const ViewUsers = ({ users }) => {
     // console.log('Selected rows:', state.selectedRows);
   };
 
-  const handleUserEdit = () => {
-
-  }
-
 
   return (
     <div>
@@ -65,11 +70,12 @@ const ViewUsers = ({ users }) => {
           Delete Selected Rows
         </button>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between'}}>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div className='data-export'>
           <button onClick={() => ExcelExport(users, 'users_data_excel')}>EXCEL</button>
         </div>
         <UserCreateModal usersData={users} />
+        {currentUser && <UserEditModal user={currentUser} show={showEditModal} onClose={() => { setShowEditModal(false); setCurrentUser(null) }} />}
       </div>
       <DataTable
         title={<div></div>}

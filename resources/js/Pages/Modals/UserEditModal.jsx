@@ -1,20 +1,25 @@
 import { useState } from 'react';
 import '../../../css/modals.css'
 import '../../../css/forms.css'
-import { useForm, usePage } from '@inertiajs/react';
-import ExcelExport from '../Exports/ExcelExport';
+import { useForm } from '@inertiajs/react';
 
-export default function UserEditModal({user}) {
-  const [showModal, setShowModal] = useState(false);
+export default function UserEditModal({user, show, onClose}) {
+  // const [showModal, setShowModal] = useState(show);
 
-  const toggleModal = () => {
-    setShowModal(!showModal);
-  }
+  // const toggleModal = () => {
+  //   setShowModal(!showModal);
+  // }
+
+  // if (user != null) {
+  //   toggleModal();
+  // }
+
+  console.log("EDIT MODAL REACHED === " + JSON.stringify(user));
 
   const { data, setData, post, processing, progress, errors, clearErrors, wasSuccessful } = useForm({
-    name: '',
-    email: '',
-    msisdn: ''
+    name: user?.name,
+    email: user?.email,
+    msisdn: user?.msisdn
   })
 
   const onValueChange = (e) => {
@@ -37,16 +42,14 @@ export default function UserEditModal({user}) {
     });
   };
 
-
-
   return (
     <>
-      {showModal &&
+      {show &&
         <div className="modal-backdrop">
           <div className="modal-box">
             <div className="modal-header">
-              <h5 className="modal-title">Add User</h5>
-              <button className="modal-close" onClick={() => setShowModal(false)}>&times;</button>
+              <h5 className="modal-title">Edit User</h5>
+              <button className="modal-close" onClick={onClose}>&times;</button>
             </div>
             <div className="modal-body">
               <form onSubmit={handleSubmit}>
