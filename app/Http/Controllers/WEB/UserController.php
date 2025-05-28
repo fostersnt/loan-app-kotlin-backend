@@ -17,7 +17,7 @@ class UserController extends Controller
 {
     public function Index()
     {
-        $usersData = User::query()->where('id', '<>', Auth::user()->id)->get();
+        $usersData = User::query()->latest()->where('id', '<>', Auth::user()->id)->get();
 
         $users = $usersData->map(function ($user) {
             return [
@@ -79,7 +79,7 @@ class UserController extends Controller
     public function userLogin(Request $request)
     {
         Log::info("LOGIN DATA === " . json_encode($request->all()));
-        $request->validator([
+        $request->validate([
             'email' => 'required|string',
             'password' => 'required|string'
         ]);
